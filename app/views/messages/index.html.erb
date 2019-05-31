@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messages</h1><br>
+<% @messages.reverse_order.each do |message| %>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">
+      <div class="row">
+        <div class="col-sm-9">
+          <%= message.message %>
+        </div>
+        <div class="col-sm-3 text-md-right">
+          <%= message.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%F %I:%M%p") %><br>
+        </div>
+      </div>
+        <% if message.tags.any? %>
+          <%# sort hashtags by frequency %>
+          <% @hashtags = message.tags.group_by(&:itself).transform_values(&:count)%>
+          <%# then put in decreasing order %>
+          <% @hashtags = Hash[@hashtags.sort_by{|k, v| v}.reverse] %><br>
+          <%# and finally - display %>
+          <% @hashtags.each do |h| %>
+            <span class="badge badge-pill badge-dark">
+              #<%= h[0].name %>
+            </span>
+          <% end %>
+        <% end %>
+      </p>
+      <div class="text-right">
+        <%= link_to 'Show', message, class: 'card-link text-success' %>
+        <%= link_to 'Edit', edit_message_path(message), class: 'card-link text-info' %>
+        <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link text-danger' %>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
+
+<%= link_to 'New Message', new_message_path, class: 'btn btn-primary' %>
