@@ -1,1 +1,20 @@
-<h1>Index Page</h1>
+<div class="container text-center">
+    <div class="row">
+        <h2><br>This is a simple rails apps that stores messages in a database and allows you to associate posts to hashtags.
+        <br><br>
+        <a class="btn btn-social btn-github btn-lg" href="https://github.com/tiakindele/LiveWellMessages">
+            <h2>
+                <span class="fa fa-github"></span> source code
+            </h2>
+        </a>
+        <br><br>Please select one of the options below.<br><br><br></h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <%= link_to 'New Message', new_message_path, class:"btn btn-primary btn-lg" %>
+        </div>
+        <div class="col-sm-6 text-center">
+            <%= link_to 'View Messages', messages_path, class:"btn btn-primary btn-lg" %>
+        </div>
+    </div>
+</div>
