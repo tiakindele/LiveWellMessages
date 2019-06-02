@@ -10,8 +10,8 @@ require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
 
-Messages.create(message: "My #mission in #life is not merely to #survive, but to thrive; and to do so with some #passion, some compassion, some humor, and some #style.")
-Messages.create(message: "Today's #mission: be #happy and #relaxed. Right now, I'm #happy")
-Messages.create(message: "To thrive and do what I #love, I need to be #healthy.")
-Messages.create(message: "#red #green #yellow #green #green #yellow - that's what my lunch meals look like! So many veggies.")
-Messages.create(message: "Sometimes I forget to moderate my meat consumption, both red and white.")
+Message.create(message: "My #mission in #life is not merely to #survive, but to thrive; and to do so with some #passion, some compassion, some humor, and some #style.")
+Message.create(message: "Today's #mission: be #happy and #relaxed. Right now, I'm #happy")
+Message.create(message: "To thrive and do what I #love, I need to be #healthy.")
+Message.create(message: "#red #green #yellow #green #green #yellow - that's what my lunch meals look like! So many veggies.")
+Message.create(message: "Sometimes I forget to moderate my meat consumption, both red and white.")
