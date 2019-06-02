@@ -1,10 +1,12 @@
 class MessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token   # added to be able to add messages from postman
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
   # GET /messages.json
   def index
     @messages = Message.all
+    # render json: @messages
   end
 
   # GET /messages/1

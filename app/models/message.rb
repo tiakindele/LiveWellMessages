@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
     has_and_belongs_to_many :tags
+    validates :message, presence: true, length: {maximum: 141}
 
     after_create do
         message = Message.find_by(id: self.id)
