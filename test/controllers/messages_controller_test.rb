@@ -3,6 +3,9 @@ require 'test_helper'
 class MessagesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @message = messages(:one)
+    @hashtag_message = messages(:hashtag_one)
+    @multi_hashtag_message = messages(:hashtag_two)
+    @doubled_hashtag_message = messages(:hashtag_three)
   end
 
   test "should get index" do
@@ -44,5 +47,25 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to messages_url
+  end
+
+  
+  ############# ADDITIONAL TESTS #############
+  test "should add tag from message" do
+    assert_difference('Tag.count') do
+      post messages_url, params: { message: { message: @hashtag_message.message } }
+    end
+  end
+
+  test "should add multiple tag from message" do
+    assert_difference('Tag.count', difference=2) do
+      post messages_url, params: { message: { message: @multi_hashtag_message.message } }
+    end
+  end
+
+  test "should add unique instance of tag from message not duplicates" do
+    assert_difference('Tag.count') do
+      post messages_url, params: { message: { message: @doubled_hashtag_message.message } }
+    end
   end
 end

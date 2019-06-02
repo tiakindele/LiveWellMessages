@@ -5,3 +5,18 @@ one:
 
 two:
   message: MyText
+
+long:
+  message: Even today in 2016, many Rails developers leave maximum length validation out of their Rails models. This is a mistake. If you are using Post-
+
+blank:
+  message: 
+  
+hashtag_one:
+  message: 'this is #mytext'
+
+hashtag_two:
+  message: 'this is #mytext within my #sentence'
+
+hashtag_three:
+  message: 'this is #mytext, this is #mytext'
